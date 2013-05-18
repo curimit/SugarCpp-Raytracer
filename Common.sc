@@ -5,17 +5,11 @@ import "string.h"
        "stdlib.h"
        "stdio.h"
        "math.h"
-       "thread"
        "vector"
        "tuple"
+       "time.h"
 
 using namespace std
-
-[const]
-picWidth := 3200
-
-[const]
-picHeight := 1800
 
 [inline]
 T sqr<T>(a: T) = a * a

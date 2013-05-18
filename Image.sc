@@ -1,6 +1,6 @@
 import "Common.sc"
        "Type.sc"
-       "Color.sc"
+       "Const.sc"
 
 void outputImage(file_name: string, image: Image, width: int, height: int)
     fout := fopen(file_name.c_str(), "w")

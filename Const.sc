@@ -1,5 +1,10 @@
 import "Type.sc"
 
+picWidth := 320
+picHeight := 180
+
+eye := Point3D(0, 0, 0)
+
 cRed   := Color(1, 0, 0)
 cGreen := Color(0, 1, 0)
 cBlue  := Color(0, 0, 1)

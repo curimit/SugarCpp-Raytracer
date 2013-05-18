@@ -1,15 +1,20 @@
 import "Common.sc"
        "Image.sc"
-       "Color.sc"
+       "Point3D.sc"
+       "Ray.sc"
+       "Type.sc"
+       "Const.sc"
 
 Color trace(p: Point3D)
     ray := Ray(eye, p - eye)
     ball := Ball(Point3D(10, 10, 100), 90)
 
-    k := hit(ray, ball) `max` 0.1
-
-    return Color(k, k, k)
-
+    ray_new: Ray
+    flag: bool
+    (flag, ray_new) = ray `reflex` ball
+    k := ray_new.v `angle` (eye - ray_new.p0)
+    k = pow(k, 1.5) * 0.9 + 0.1
+    return flag ? Color(k, k, k) : cBackground
 
 [public]
 class Engine
@@ -33,10 +38,6 @@ class Engine
             @image[t] = trace(Point3D(x, y, 0.1))
 
     void renderImage(core_count: int)
-        pool: vector<thread>
-        for i <- 0 to core_count - 1
-            pool.push_back(thread(&Engine::renderThread, this, i, core_count))
-        for &x <- pool
-            x.join()
+        renderThread(1, 1)
         outputImage("main.ppg", image, picWidth, picHeight)
 
