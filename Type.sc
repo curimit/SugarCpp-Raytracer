@@ -1,20 +1,20 @@
 import "Common.sc"
 
-class Color(r: double, g: double, b: double)
+case class Color(r: double, g: double, b: double)
 
-typedef Image = vector<Color>
+type Image = vector<Color>
 
-class Point3D(x: double, y: double, z: double)
+case class Point3D(x: double, y: double, z: double)
 
-class Line(p0: Point3D, v: Point3D)
+case class Line(p0: Point3D, v: Point3D)
 
-class Ray(p0: Point3D, v: Point3D)
+case class Ray(p0: Point3D, v: Point3D)
 
-class Object
-class Ball(p0: Point3D, r: double) : Object
-class Plane(p0: Point3D, n: Point3D) : Object
+case class Object
+case class Ball(p0: Point3D, r: double) : Object
+case class Plane(p0: Point3D, n: Point3D) : Object
 
-class Light(p0: Point3D, c: Color)
+case class Light(p0: Point3D, c: Color)
 
-class Info(lights: vector<Light>)
-class World(info: Info, list: vector<Object>)
+case class Info(lights: vector<Light>)
+case class World(info: Info, list: vector<Object>)

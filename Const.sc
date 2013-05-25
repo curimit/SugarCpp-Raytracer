@@ -1,7 +1,7 @@
 import "Type.sc"
 
-picWidth := 320
-picHeight := 180
+picWidth := 640
+picHeight := 360
 
 eye := Point3D(0, 0, 0)
 

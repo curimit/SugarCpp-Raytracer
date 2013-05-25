@@ -13,7 +13,7 @@ Color trace(p: Point3D)
     flag: bool
     (flag, ray_new) = ray `reflex` ball
     k := ray_new.v `angle` (eye - ray_new.p0)
-    k = pow(k, 1.5) * 0.9 + 0.1
+    k = pow(k, 1.8) * 0.9 + 0.1
     return flag ? Color(k, k, k) : cBackground
 
 [public]
@@ -28,9 +28,7 @@ class Engine
         @factor = picWidth `min` picHeight
 
     void renderThread(core_id: int, core_count: int)
-        for ct <- 0 to @length / core_count
-            t := ct * core_count + core_id
-            if t >= @length then break
+        for t <- 0 to @length / core_count, t => t * core_count + core_id, t < @length
             i := t / picWidth
             j := t % picWidth
             x := double(j - picWidth / 2) / factor
